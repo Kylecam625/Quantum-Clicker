@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Workshop Tycoon</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div id="gameContainer">
+        <!-- Left Panel - Particle and Stats -->
+        <div id="leftPanel">
+            <div id="statsPanel">
+                <div id="particleCount">0 Particles</div>
+                <div id="particlesPerSecond">QpS: 0</div>
+                <div id="totalParticlesEarned">Total: 0</div>
+            </div>
+            <div id="clickArea">
+                <img class="atom-background" alt="Atom Background" style="transform: translate(-50%, -50%) scale(0.9)">
+                <div class="quantum-core">
+                    <div class="core-orb blue"></div>
+                    <div class="core-orb red"></div>
+                </div>
+                <div class="fill-bar-container">
+                    <img src="assets/Fill bar.gif" class="fill-bar" alt="Fill Bar">
+                    <div class="fill-bar-banner"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel - Buildings and Upgrades -->
+        <div id="rightPanel">
+            <div id="buildingsSection">
+                <h2 class="section-header">Quantum Facilities</h2>
+                <!-- Buildings will be added here dynamically -->
+            </div>
+            <div id="upgradesSection">
+                <h2 class="section-header">Quantum Upgrades</h2>
+                <!-- Upgrades will be added here dynamically -->
+            </div>
+        </div>
+
+        <div id="controlButtons" class="control-buttons">
+            <button onclick="saveGame()">Save Game</button>
+            <button onclick="resetGame()">Reset Game</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/buildings.js"></script>
+    <script src="js/upgrades.js"></script>
+    <script src="js/achievements.js"></script>
+    <script src="js/events.js"></script>
+    <script src="js/saveManager.js"></script>
+    <script>
+    function setupGifLoop() {
+        const atomGif = document.querySelector('.atom-background');
+        let isLargeSize = false;
+        let isPlaying = false;
+        
+        // Create a transparent 1x1 pixel GIF as placeholder
+        const transparentGif = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+        
+        // Set initial state
+        atomGif.src = transparentGif;
+        
+        function playGifOnce() {
+            if (isPlaying) return;
+            isPlaying = true;
+            
+            // Set size for this play
+            const scale = isLargeSize ? 1.1 : 0.9;
+            atomGif.style.transform = `translate(-50%, -50%) scale(${scale})`;
+            isLargeSize = !isLargeSize;
+            
+            // Load and play the GIF once
+            atomGif.src = `assets/behind atom.gif?t=${Date.now()}`;
+            
+            // After the GIF duration (assuming 1 second), switch to transparent placeholder
+            setTimeout(() => {
+                atomGif.src = transparentGif;
+                isPlaying = false;
+                // Wait 3 seconds before next play
+                setTimeout(playGifOnce, 3000);
+            }, 1000); // Adjust this value to match your GIF duration
+        }
+        
+        // Start the sequence
+        playGifOnce();
+    }
+
+    // Call the setup function when the page loads
+    window.addEventListener('load', setupGifLoop);
+    </script>
+</body>
+</html> 

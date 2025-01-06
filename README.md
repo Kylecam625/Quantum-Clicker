@@ -34,6 +34,15 @@ An interactive web-based idle/clicker game where players generate and collect qu
 2. Open `index.html` in your web browser
 3. Start clicking and collecting particles!
 
+## Roadmap
+
+Planned features and improvements:
+- [ ] Add sound effects and background music
+- [ ] Mobile responsiveness
+- [ ] More particle effects and animations
+- [ ] Additional upgrades and achievements
+- [ ] Social features and leaderboards
+
 ## Contributing
 
 Feel free to submit issues and pull requests to help improve the game.

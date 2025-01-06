@@ -1,4 +1,4 @@
-# Quantum Particle Game
+# Quantum-Clicker
 
 An interactive web-based idle/clicker game where players generate and collect quantum particles through various mechanics and upgrades.
 
@@ -36,4 +36,4 @@ An interactive web-based idle/clicker game where players generate and collect qu
 
 ## Contributing
 
-Feel free to submit issues and pull requests to help improve the game. 
+Feel free to submit issues and pull requests to help improve the game.
